@@ -1,0 +1,102 @@
+// MIT License
+// Copyright (c) 2020 ysicing <i@ysicing.me>
+
+package time
+
+import (
+	"github.com/ysicing/go-utils/convert"
+	"time"
+)
+
+// NowUnixString 当前时间时间戳
+func NowUnixString() string {
+	return convert.Int642Str(time.Now().Unix())
+}
+
+// NowUnixInt64 当前时间戳
+func NowUnix() int64 {
+	return time.Now().Unix()
+}
+
+// Today0hourUnix 今天0时时间戳
+func Today0hourUnix() int64 {
+	t := time.Now()
+	t1 := time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location()).AddDate(0, 0, -1)
+	return t1.Unix()
+}
+
+// BeforeNowUnix 历史时间戳
+func BeforeNowUnix(old string) (oldunix int64) {
+	return time.Now().Unix() - convert.Str2Int64(old)
+}
+
+// UnixInt642String unix转化为字符串
+func UnixInt642String(t int64) string {
+	return time.Unix(t, 0).Format("2006-01-02 15:04:05")
+}
+
+// UnixString2String unix转化为字符串
+func UnixString2String(t string) string {
+	return time.Unix(convert.Str2Int64(t), 0).Format("2006-01-02 15:04:05")
+}
+
+// 获取今天时间
+func GetToday() string {
+	return time.Now().Format("20060102")
+}
+
+// 获取当前月份
+func GetMonth() string {
+	return time.Now().Format("200601")
+}
+
+// 获取当前年份
+func GetYear() string {
+	return time.Now().Format("2006")
+}
+
+// GetWeekFristDayUnix 时间
+func GetWeekFristDayUnix() int64 {
+	now := time.Now()
+	offset := int(time.Monday - now.Weekday())
+	if offset > 0 {
+		offset = -6
+	}
+	weekStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset)
+	return weekStart.Unix()
+}
+
+// GetWeekLastDayUnix 时间
+func GetWeekLastDayUnix() int64 {
+	now := time.Now()
+	offset := int(time.Monday - now.Weekday())
+	if offset > 0 {
+		offset = -6
+	}
+	weekNextStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset+7)
+	return weekNextStart.Unix() - 1
+}
+
+// GetWeekFristDayUnix 时间
+func GetWeekDayUnix() (int64, int64) {
+	now := time.Now()
+	offset := int(time.Monday - now.Weekday())
+	if offset > 0 {
+		offset = -6
+	}
+	weekStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset)
+	weekNextStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset+7)
+	return weekStart.Unix(), weekNextStart.Unix() - 1
+}
+
+// GetWeekDayUnixString 时间
+func GetWeekDayUnixString() (string, string) {
+	now := time.Now()
+	offset := int(time.Monday - now.Weekday())
+	if offset > 0 {
+		offset = -6
+	}
+	weekStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset)
+	weekNextStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset+7)
+	return weekStart.Format("2006-01-02 15:03:04"), weekNextStart.Format("2006-01-02 15:03:04")
+}
