@@ -18,6 +18,11 @@ func NowUnix() int64 {
 	return time.Now().Unix()
 }
 
+// NowFormat 当前时间format
+func NowFormat() string  {
+	return time.Now().Format("2006-01-02 15:04:05")
+}
+
 // Today0hourUnix 今天0时时间戳
 func Today0hourUnix() int64 {
 	t := time.Now()
