@@ -5,6 +5,7 @@ package time
 
 import (
 	"github.com/ysicing/go-utils/convert"
+	"strings"
 	"time"
 )
 
@@ -104,4 +105,34 @@ func GetWeekDayUnixString() (string, string) {
 	weekStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset)
 	weekNextStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local).AddDate(0, 0, offset+7)
 	return weekStart.Format("2006-01-02 15:03:04"), weekNextStart.Format("2006-01-02 15:03:04")
+}
+
+// NowAddUnix2Int64 当前时间戳 add
+func NowAddUnix2Int64(key string, value time.Duration) int64 {
+	lkey := strings.ToLower(key)
+	if lkey == "m" || lkey == "minute" {
+		return time.Now().Add(time.Minute * value).Unix()
+	}
+	if lkey == "d" || lkey == "day" {
+		return time.Now().Add(time.Hour * 24 * value).Unix()
+	}
+	if lkey == "w" || lkey == "week" {
+		return time.Now().Add(time.Hour * 24 * 7 * value).Unix()
+	}
+	return time.Now().Add(time.Hour * value).Unix()
+}
+
+// NowAddUnix2Str 当前时间戳 add
+func NowAddUnix2Str(key string, value time.Duration) string {
+	lkey := strings.ToLower(key)
+	if lkey == "m" || lkey == "minute" {
+		return time.Now().Add(time.Minute * value).String()
+	}
+	if lkey == "d" || lkey == "day" {
+		return time.Now().Add(time.Hour * 24 * value).String()
+	}
+	if lkey == "w" || lkey == "week" {
+		return time.Now().Add(time.Hour * 24 * 7 * value).String()
+	}
+	return time.Now().Add(time.Hour * value).String()
 }
