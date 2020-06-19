@@ -4,7 +4,10 @@
 package convert
 
 import (
+	"encoding/json"
+	"reflect"
 	"strconv"
+	"strings"
 )
 
 // Str2Int string to int
@@ -39,4 +42,53 @@ func Str2Byte(s string) []byte {
 // Int642Str int64 to string
 func Int642Str(i int64) string {
 	return strconv.FormatInt(i, 10)
+}
+
+// InfToInt ...
+func InfToInt(inter interface{}) (i int) {
+	switch inter.(type) {
+	case int:
+		i = inter.(int)
+		break
+	}
+	return
+}
+
+// Struct2Map ...
+func Struct2Map(obj interface{}) map[string]interface{} {
+	t := reflect.TypeOf(obj)
+	v := reflect.ValueOf(obj)
+
+	var data = make(map[string]interface{})
+	for i := 0; i < t.NumField(); i++ {
+		data[t.Field(i).Name] = v.Field(i).Interface()
+	}
+	return data
+}
+
+// Struct2Json2Map ...
+func Struct2Json2Map(obj interface{}) (result map[string]interface{}, err error) {
+	jsonBytes, err := json.Marshal(obj)
+	if err != nil {
+		return
+	}
+	err = json.Unmarshal(jsonBytes, &result)
+	return
+}
+
+// Map2String ...
+func Map2String(data []string) (result string) {
+	if len(data) <= 0 {
+		return
+	}
+	for _, v := range data {
+		if strings.Contains(v, "\"") {
+			result += v
+		} else {
+			result += "\"" + v + "\""
+		}
+		result += ","
+	}
+	result = strings.Trim(result, ",")
+	return
 }

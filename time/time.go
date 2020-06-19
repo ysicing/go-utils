@@ -19,7 +19,7 @@ func NowUnix() int64 {
 }
 
 // NowFormat 当前时间format
-func NowFormat() string  {
+func NowFormat() string {
 	return time.Now().Format("2006-01-02 15:04:05")
 }
 
