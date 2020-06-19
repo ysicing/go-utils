@@ -4,7 +4,6 @@
 package ip
 
 import (
-	"fmt"
 	"net"
 )
 
@@ -15,15 +14,15 @@ func CheckIP(ip string) bool {
 }
 
 //LocalIP 获取本机非loopback ip,默认第一个
-func LocalIP() (net.IP, error) {
+func LocalIP() string {
 	tables, err := net.Interfaces()
 	if err != nil {
-		return nil, err
+		return ""
 	}
 	for _, t := range tables {
 		addrs, err := t.Addrs()
 		if err != nil {
-			return nil, err
+			return ""
 		}
 		for _, a := range addrs {
 			ipnet, ok := a.(*net.IPNet)
@@ -31,9 +30,9 @@ func LocalIP() (net.IP, error) {
 				continue
 			}
 			if v4 := ipnet.IP.To4(); v4 != nil {
-				return v4, nil
+				return v4.String()
 			}
 		}
 	}
-	return nil, fmt.Errorf("cannot find local IP address")
+	return ""
 }
