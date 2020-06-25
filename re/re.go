@@ -9,45 +9,45 @@ import (
 )
 
 const (
-	Mail           = `^[0-9a-z][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}[0-9a-z]\.){1,4}[a-z]{2,4}$`
-	ConfigMapsName = "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
-	EnvsName       = "^[-._a-zA-Z][-._a-zA-Z0-9]*$"
-	Phone          = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$"
-	Domain         = "[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\\.?"
-	Git            = "^(http(s)?|git|ssh).*(\\.git)(/)?$"
+	mail           = `^[0-9a-z][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}[0-9a-z]\.){1,4}[a-z]{2,4}$`
+	configMapsName = "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
+	envsName       = "^[-._a-zA-Z][-._a-zA-Z0-9]*$"
+	phone          = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$"
+	domain         = "[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\\.?"
+	git            = "^(http(s)?|git|ssh).*(\\.git)(/)?$"
 )
 
 //VerifyEmailFormat email verify
 func VerifyEmailFormat(code string) bool {
-	reg := regexp.MustCompile(Mail)
+	reg := regexp.MustCompile(mail)
 	return reg.MatchString(code)
 }
 
-// VerifyConfigMapsName 校验k8s configmaps name
+// VerifyK8sConfigMapsName 校验k8s configmaps name
 func VerifyK8sConfigMapsName(code string) bool {
-	return regexp.MustCompile(ConfigMapsName).MatchString(code)
+	return regexp.MustCompile(configMapsName).MatchString(code)
 }
 
 // VerifyK8sEnvs 校验k8s envs name
 func VerifyK8sEnvs(code string) bool {
-	return regexp.MustCompile(EnvsName).MatchString(code)
+	return regexp.MustCompile(envsName).MatchString(code)
 }
 
 //VerifyMobileFormat mobile verify
 func VerifyMobileFormat(mobileNum string) bool {
-	reg := regexp.MustCompile(Phone)
+	reg := regexp.MustCompile(phone)
 	return reg.MatchString(mobileNum)
 }
 
 //VerifyDomainFormat domain verify
 func VerifyDomainFormat(domain string) bool {
-	reg := regexp.MustCompile(Domain)
+	reg := regexp.MustCompile(domain)
 	return reg.MatchString(domain)
 }
 
 //VerifyGitFormat git addr verify
 func VerifyGitFormat(gitaddr string) bool {
-	reg := regexp.MustCompile(Git)
+	reg := regexp.MustCompile(git)
 	return reg.MatchString(gitaddr)
 }
 

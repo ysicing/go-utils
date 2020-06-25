@@ -8,18 +8,18 @@ import (
 	"time"
 )
 
-// // Rand 随机数
+// Rand 随机数
 func Rand() int {
 	return rand.Int()
 }
 
-// RandByNum 随机数
-func RandByNum(num int) int {
+// NumRand 随机数
+func NumRand(num int) int {
 	return rand.Intn(num)
 }
 
-// RandString 生成随机字符串
-func RandString(len int) string {
+// StringRand 生成随机字符串
+func StringRand(len int) string {
 	var r *rand.Rand
 	r = rand.New(rand.NewSource(time.Now().Unix()))
 	bytes := make([]byte, len)

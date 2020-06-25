@@ -12,8 +12,8 @@ import (
 	"strings"
 )
 
-//FileExists check file exist
-func FileExists(filename string) (bool, error) {
+//CheckFileExists check file exist
+func CheckFileExists(filename string) (bool, error) {
 	if _, err := os.Stat(filename); os.IsNotExist(err) {
 		return false, nil
 	} else if err != nil {
@@ -24,7 +24,7 @@ func FileExists(filename string) (bool, error) {
 
 //CheckAndCreateDir check and create dir
 func CheckAndCreateDir(path string) error {
-	if subPathExists, err := FileExists(path); err != nil {
+	if subPathExists, err := CheckFileExists(path); err != nil {
 		return fmt.Errorf("Could not determine if subPath %s exists; will not attempt to change its permissions", path)
 	} else if !subPathExists {
 		if err := os.MkdirAll(path, 0755); err != nil {
@@ -40,7 +40,7 @@ func CheckAndCreateDir(path string) error {
 
 //CheckAndCreateDirByMode check and create dir
 func CheckAndCreateDirByMode(path string, mode os.FileMode) error {
-	if subPathExists, err := FileExists(path); err != nil {
+	if subPathExists, err := CheckFileExists(path); err != nil {
 		return fmt.Errorf("Could not determine if subPath %s exists; will not attempt to change its permissions", path)
 	} else if !subPathExists {
 		if err := os.MkdirAll(path, mode); err != nil {
@@ -120,8 +120,8 @@ func SearchFile(pathDir, name string, level int) bool {
 	return false
 }
 
-//FileExistsWithSuffix 指定目录是否含有指定后缀的文件
-func FileExistsWithSuffix(pathDir, suffix string) bool {
+//CheckFileExistsWithSuffix 指定目录是否含有指定后缀的文件
+func CheckFileExistsWithSuffix(pathDir, suffix string) bool {
 	files, _ := ioutil.ReadDir(pathDir)
 	for _, file := range files {
 		if strings.HasSuffix(file.Name(), suffix) {

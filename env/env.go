@@ -7,9 +7,9 @@ import (
 	"os"
 )
 
-// EnvString 获取环境变量
-func EnvString(env, fallback string) string {
-	if e := os.Getenv(env); e != "" {
+// GetEnv 获取环境变量
+func GetEnv(envstr, fallback string) string {
+	if e := os.Getenv(envstr); e != "" {
 		return e
 	}
 	return fallback

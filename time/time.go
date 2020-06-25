@@ -14,7 +14,7 @@ func NowUnixString() string {
 	return convert.Int642Str(time.Now().Unix())
 }
 
-// NowUnixInt64 当前时间戳
+// NowUnix 当前时间戳
 func NowUnix() int64 {
 	return time.Now().Unix()
 }
@@ -46,17 +46,17 @@ func UnixString2String(t string) string {
 	return time.Unix(convert.Str2Int64(t), 0).Format("2006-01-02 15:04:05")
 }
 
-// 获取今天时间
+// GetToday 获取今天时间
 func GetToday() string {
 	return time.Now().Format("20060102")
 }
 
-// 获取当前月份
+// GetMonth 获取当前月份
 func GetMonth() string {
 	return time.Now().Format("200601")
 }
 
-// 获取当前年份
+// GetYear 获取当前年份
 func GetYear() string {
 	return time.Now().Format("2006")
 }
@@ -83,7 +83,7 @@ func GetWeekLastDayUnix() int64 {
 	return weekNextStart.Unix() - 1
 }
 
-// GetWeekFristDayUnix 时间
+// GetWeekDayUnix 时间
 func GetWeekDayUnix() (int64, int64) {
 	now := time.Now()
 	offset := int(time.Monday - now.Weekday())
