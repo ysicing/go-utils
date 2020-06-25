@@ -4,6 +4,7 @@
 package file
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -128,4 +129,27 @@ func FileExistsWithSuffix(pathDir, suffix string) bool {
 		}
 	}
 	return false
+}
+
+// RemoveFiles 删除文件
+func RemoveFiles(path string) bool {
+	if err := os.RemoveAll(path); err != nil {
+		return false
+	}
+	return true
+}
+
+// ReadFileOneLine 读取文件一行
+func ReadFileOneLine(fileName string) string {
+	file, err := os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, os.ModePerm)
+	if err != nil {
+		return ""
+	}
+	defer file.Close()
+	buf := bufio.NewReader(file)
+	line, err := buf.ReadString('\n')
+	if err != nil {
+		return ""
+	}
+	return line
 }

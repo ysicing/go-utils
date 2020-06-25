@@ -92,3 +92,10 @@ func Map2String(data []string) (result string) {
 	result = strings.Trim(result, ",")
 	return
 }
+
+//func GetStr(str string) string {
+//	// 去掉空格以及换行符
+//	str = strings.Replace(str, " ", "", -1)
+//	str = strings.Replace(str, "\n", "", -1)
+//	return str
+//}
