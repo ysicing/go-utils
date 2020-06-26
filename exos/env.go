@@ -1,7 +1,7 @@
 // MIT License
 // Copyright (c) 2020 ysicing <i@ysicing.me>
 
-package env
+package exos
 
 import (
 	"os"

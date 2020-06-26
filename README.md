@@ -12,29 +12,28 @@ go get -u github.com/ysicing/go-utils
 ## 函数
 
 ```go
-├── base64
-│   └── base64.go 
+├── check
+│   └── re.go
 ├── convert
 │   ├── array.go
 │   └── convert.go
-├── env
-│   └── env.go
-├── file
+├── exfile
 │   └── file.go
-├── hash
-│   └── hash.go
-├── ip
-│   └── ip.go
-├── json
+├── exhash
+│   ├── base64.go
+│   ├── md5.go
+│   └── sha.go
+├── exid
+│   └── uuid.go
+├── exjson
 │   └── json.go
-├── ptr
-│   └── ptr.go
-├── rand
+├── exos
+│   ├── env.go
+│   └── ip.go
+├── exrand
 │   └── rand.go
-├── re
-│   └── re.go
-├── time
+├── extime
 │   └── time.go
-└── uuid
-    └── uuid.go
+└── ptr
+    └── ptr.go
 ```

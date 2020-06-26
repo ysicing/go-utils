@@ -1,7 +1,7 @@
 // MIT License
 // Copyright (c) 2020 ysicing <i@ysicing.me>
 
-package env
+package exos
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -16,8 +16,8 @@ func TestEnvString(t *testing.T) {
 
 	key := "FLOCKER_SET_VAR"
 	os.Setenv(key, expected)
-	assert.Equal(expected, EnvString(key, "~"+expected))
+	assert.Equal(expected, GetEnv(key, "~"+expected))
 
 	key = "FLOCKER_UNSET_VAR"
-	assert.Equal(expected, EnvString(key, expected))
+	assert.Equal(expected, GetEnv(key, expected))
 }

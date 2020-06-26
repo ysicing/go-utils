@@ -1,9 +1,11 @@
 // MIT License
 // Copyright (c) 2020 ysicing <i@ysicing.me>
 
-package ip
+package exos
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestCheckIP(t *testing.T) {
 	t.Logf("ip %s %t", "1829.123", CheckIP("1829.123"))

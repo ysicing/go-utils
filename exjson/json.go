@@ -1,7 +1,7 @@
 // MIT License
 // Copyright (c) 2020 ysicing <i@ysicing.me>
 
-package json
+package exjson
 
 import "encoding/json"
 

@@ -1,7 +1,7 @@
 // MIT License
 // Copyright (c) 2020 ysicing <i@ysicing.me>
 
-package base64
+package exhash
 
 import (
 	b32 "encoding/base32"

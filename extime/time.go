@@ -1,7 +1,7 @@
 // MIT License
 // Copyright (c) 2020 ysicing <i@ysicing.me>
 
-package time
+package extime
 
 import (
 	"github.com/ysicing/go-utils/convert"

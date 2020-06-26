@@ -1,7 +1,7 @@
 // MIT License
 // Copyright (c) 2020 ysicing <i@ysicing.me>
 
-package uuid
+package exid
 
 import (
 	guuid "github.com/google/uuid"
