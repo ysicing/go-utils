@@ -14,6 +14,15 @@ func Encode(v interface{}) (string, error) {
 	return string(bytes), nil
 }
 
+// Encodev1 encode
+func Encodev1(v interface{}) (string) {
+	bytes, err := json.Marshal(v)
+	if err != nil {
+		return ""
+	}
+	return string(bytes)
+}
+
 // Decode decode
 func Decode(data []byte, val interface{}) error {
 	return json.Unmarshal(data, val)
