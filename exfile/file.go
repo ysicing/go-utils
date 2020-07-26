@@ -22,6 +22,16 @@ func CheckFileExists(filename string) (bool, error) {
 	return true, nil
 }
 
+//CheckFileExistsv2 check file exist
+func CheckFileExistsv2(filename string) (bool) {
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
+		return false
+	} else if err != nil {
+		return false
+	}
+	return true
+}
+
 //CheckAndCreateDir check and create dir
 func CheckAndCreateDir(path string) error {
 	if subPathExists, err := CheckFileExists(path); err != nil {
