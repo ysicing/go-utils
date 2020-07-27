@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
+	"path/filepath"
 	"strings"
 )
 
@@ -75,7 +76,8 @@ func DirIsEmpty(dir string) bool {
 
 // WriteFile 写文件
 func WriteFile(filePath string, content string) error {
-	if err := CheckAndCreateDir(filePath); err != nil {
+	filedir := filepath.Dir(filePath)
+	if err := CheckAndCreateDir(filedir); err != nil {
 		return err
 	}
 	if err := ioutil.WriteFile(filePath, []byte(content), os.ModePerm); err != nil {
