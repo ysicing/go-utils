@@ -12,5 +12,5 @@ func Int64Ptr(p int64) *int64 { return &p }
 // StringPtr 字符串指针
 func StringPtr(p string) *string { return &p }
 
-// BoolPrt bool指针
-func BoolPtr(p bool) *bool { return &p}
+// BoolPtr bool指针
+func BoolPtr(p bool) *bool { return &p }

@@ -15,7 +15,7 @@ func Encode(v interface{}) (string, error) {
 }
 
 // Encodev1 encode
-func Encodev1(v interface{}) (string) {
+func Encodev1(v interface{}) string {
 	bytes, err := json.Marshal(v)
 	if err != nil {
 		return ""

@@ -24,7 +24,7 @@ func CheckFileExists(filename string) (bool, error) {
 }
 
 //CheckFileExistsv2 check file exist
-func CheckFileExistsv2(filename string) (bool) {
+func CheckFileExistsv2(filename string) bool {
 	if _, err := os.Stat(filename); os.IsNotExist(err) {
 		return false
 	} else if err != nil {
