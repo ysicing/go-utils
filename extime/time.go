@@ -46,6 +46,16 @@ func UnixString2String(t string) string {
 	return time.Unix(convert.Str2Int64(t), 0).Format("2006-01-02 15:04:05")
 }
 
+// UnixNanoInt642String unix转化为字符串
+func UnixNanoInt642String(t int64) string {
+	return time.Unix(0, t).Format("2006-01-02 15:04:05")
+}
+
+// UnixNanoString2String unix转化为字符串
+func UnixNanoString2String(t string) string {
+	return time.Unix(0,convert.Str2Int64(t)).Format("2006-01-02 15:04:05")
+}
+
 // GetToday 获取今天时间
 func GetToday() string {
 	return time.Now().Format("20060102")
