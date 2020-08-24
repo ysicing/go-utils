@@ -4,9 +4,10 @@
 package extime
 
 import (
-	"github.com/ysicing/go-utils/convert"
 	"strings"
 	"time"
+
+	"github.com/ysicing/go-utils/convert"
 )
 
 // NowUnixString 当前时间时间戳
@@ -53,7 +54,17 @@ func UnixNanoInt642String(t int64) string {
 
 // UnixNanoString2String unix转化为字符串
 func UnixNanoString2String(t string) string {
-	return time.Unix(0,convert.Str2Int64(t)).Format("2006-01-02 15:04:05")
+	return time.Unix(0, convert.Str2Int64(t)).Format("2006-01-02 15:04:05")
+}
+
+// GetTodayMin 获取今天时间分钟
+func GetTodayMin() string {
+	return time.Now().Format("200601021504")
+}
+
+// GetTodayHour 获取今天时间小时
+func GetTodayHour() string {
+	return time.Now().Format("2006010215")
 }
 
 // GetToday 获取今天时间
